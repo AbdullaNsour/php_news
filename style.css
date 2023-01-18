@@ -40,14 +40,14 @@ body {
 	color: black;
 }
 .nav a:hover {
-  background-color: #595959;
+  background-color: #940A0D;
 }
 a.foc {
-	background-color: #595959;
+	background-color: #940A0D;
 }
 .main {
   background-color: #E6E6E6;
-  box-shadow: 0px -1px 2px grey;
+  box-shadow: 0px -1px 2px #940A0D;
   margin-top: 40px;
 	height: 1000px;
 }
@@ -76,24 +76,25 @@ p.datetime {
   padding-top: 17px;
   color: #808080;
 }
-p.sazetak {
+p.details {
   width: 86%;
   font-size: 26px;
   margin-left: 7%;
   margin-top: 20px;
 }
-p.tekst {
+p.text {
   width: 86%;
   font-size: 16px;
   margin-left: 7%;
   margin-top: 20px;
 }
-.clanak_image {
+.article_image {
   width: 95%;
   height: 400px;
   object-fit: cover;
   padding-left: 20px;
   padding-top: 25px;
+  margin: 25px;
 }
 article {
 	height: 300px;
@@ -174,7 +175,7 @@ footer {
 	border: 1px solid black;
 }
 
-/* unos.php */
+/* input.php */
 
 @media (max-width: 1024px) {
 	.main {
@@ -187,7 +188,7 @@ footer {
 		width: 50%;
 		margin-left: 25%;
 	}
-	.clanak_image {
+	.article_image {
     width: 94%;
     height: 360px;
     padding-left: 3%;
@@ -214,7 +215,7 @@ footer {
 		margin-top: 10px;
 		font-size: 15px;
 	}
-	.clanak_image {
+	.article_image {
     height: 380px;
   }
 }
@@ -242,10 +243,10 @@ footer {
 	article h5 {
 		margin-top: 10px;
 	}
-	#svijet {
+	#world {
 		text-align: center;
 	}
-	#ekonomija {
+	#economy {
 		text-align: center;
 	}
 	footer {
@@ -259,7 +260,7 @@ footer {
 		width: 60%;
 		margin-left: 20%;
 	}
-	.clanak_image {
+	.article_image {
     height: 300px;
   }
 }
@@ -270,7 +271,7 @@ footer {
 	}
 	.nav {
 	  min-height: 221px;
-	  background-color: #808080;
+	  background-color: #940A0D;
 	}
 	.nav a {
 		width: 100%;
@@ -294,7 +295,7 @@ footer {
 		width: 70%;
 		margin-left: 15%;
 	}
-	.clanak_image {
+	.article_image {
     height: 250px;
   }
 }

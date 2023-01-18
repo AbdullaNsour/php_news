@@ -13,8 +13,8 @@
 	<link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
 	<title>
 		<?php
-			$kategorija = $_GET['kategorija'];
-			echo strtoupper($kategorija);
+			$category = $_GET['category'];
+			echo strtoupper($category);
 		?>
 	</title>
 	<style>
@@ -26,30 +26,30 @@
 </head>
 <body>
   <div class="logo">
-    <a href="index.php"><img src="bbc.jpg" /></a>
+    <a href="index.php"><img src="img/bbc.jpg" /></a>
   </div>
 
   <div class="nav">
     <div class="wrapper">
 			<a href="index.php">HOME</a>
 			<?php
-				$kategorija = $_GET['kategorija'];
-				if($kategorija == 'svijet') {
-					echo "<a class='foc' href='kategorija.php?kategorija=svijet'>WORLD</a>";
+				$category = $_GET['category'];
+				if($category == 'world') {
+					echo "<a class='foc' href='category.php?category=WORLD'>WORLD</a>";
 				} else {
-					echo "<a href='kategorija.php?kategorija=svijet'>WORLD</a>";
+					echo "<a href='category.php?category=world'>WORLD</a>";
 				}
-				if($kategorija == 'ekonomija') {
-					echo "<a class='foc' href='kategorija.php?kategorija=ekonomija'>ECONOMY</a>";
+				if($category == 'economy') {
+					echo "<a class='foc' href='category.php?category=economy'>ECONOMY</a>";
 				} else {
-					echo "<a href='kategorija.php?kategorija=ekonomija'>ECONOMY</a>";
+					echo "<a href='category.php?category=economy'>ECONOMY</a>";
 				}
 				if(isset($_SESSION['username'])) {
-					echo "<a href='administracija.php'>ADMINISTRATION</a>";
-					echo "<a href='unos.php'>ENTRY</a>";
+					echo "<a href='administration.php'>ADMINISTRATION</a>";
+					echo "<a href='input.php'>ENTRY</a>";
 					echo "<a href='logout.php'>LOGOUT</a>";
 				} else {
-					echo "<a href='registracija.php'>ADMINISTRATION</a>";
+					echo "<a href='categorys.php'>ADMINISTRATION</a>";
 					echo "<a href='login.php'>Login</a>";
 				}
 			?>
@@ -61,16 +61,16 @@
 				<?php
 
 					define('UPLPATH', 'img/');
-					$kategorija = $_GET['kategorija'];
-					$query = "SELECT * FROM vijesti WHERE kategorija='$kategorija' AND arhiva=0";
+					$category = $_GET['category'];
+					$query = "SELECT * FROM news WHERE category='$category' AND archives=0";
 					$result = mysqli_query($dbc, $query);
-					echo "<h1>$kategorija</h1>";
+					echo "<h1>$category</h1>";
 					while($row = mysqli_fetch_array($result)) {
 						echo "<article>
 							<div class='news'>
-							<div class='news_image'><img src='" .UPLPATH.$row['slika']. "'></div>
-							<h4><a href='clanak.php?id=".$row['id']."'>".$row['naslov']."</a></h4>
-							<h5>".$row['sazetak']."</h5>
+							<div class='news_image'><img src='" .UPLPATH.$row['image']. "'></div>
+							<h4><a href='article.php?id=".$row['id']."'>".$row['title']."</a></h4>
+							<h5>".$row['details']."</h5>
 							</div>
 							</article>";
 					}

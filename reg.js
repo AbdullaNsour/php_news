@@ -1,44 +1,44 @@
 document.getElementById("prijava").onclick = function(event) {
   var slanjeForme = true;
 
-  // Ime korisnika mora biti uneseno
+  // User name must be entered
   var poljeIme = document.getElementById("ime");
   var ime = document.getElementById("ime").value;
   if (ime.length == 0) {
     slanjeForme = false;
     poljeIme.style.border="1px dashed red";
-    document.getElementById("porukaIme").innerHTML="<br>Unesite ime!<br>";
+    document.getElementById("porukaIme").innerHTML="<br>Enter a name!<br>";
   }
 
-  // Prezime korisnika mora biti uneseno
-  var poljePrezime = document.getElementById("prezime");
-  var prezime = document.getElementById("prezime").value;
-  if (prezime.length == 0) {
+  // The user's last name must be entered
+  var fieldSurname = document.getElementById("last_name");
+  var last_name = document.getElementById("last_name").value;
+  if (last_name.length == 0) {
     slanjeForme = false;
-    poljePrezime.style.border="1px dashed red";
-    document.getElementById("porukaPrezime").innerHTML="<br>Unesite prezime!<br>";
+    fieldSurname.style.border="1px dashed red";
+    document.getElementById("messageLast_name").innerHTML="<br>Enter your last name!<br>";
   }
 
-  // Korisničko ime mora biti uneseno
+  // Username must be entered
   var poljeUsername = document.getElementById("username");
   var username = document.getElementById("username").value;
   if (username.length == 0) {
     slanjeForme = false;
     poljeUsername.style.border="1px dashed red";
-    document.getElementById("porukaUsername").innerHTML="<br>Unesite username!<br>";
+    document.getElementById("Username_message").innerHTML="<br>Enter username!<br>";
   }
 
-  // Provjera podudaranja lozinki
-  var poljePass = document.getElementById("lozinka");
-  var pass = document.getElementById("lozinka").value;
-  var poljePassRep = document.getElementById("lozinkaRep");
-  var passRep = document.getElementById("lozinkaRep").value;
+  //Password match check
+  var poljePass = document.getElementById("password");
+  var pass = document.getElementById("password").value;
+  var poljePassRep = document.getElementById("passwordRep");
+  var passRep = document.getElementById("passwordRep").value;
   if (pass.length == 0 || passRep.length == 0 || pass != passRep) {
     slanjeForme = false;
     poljePass.style.border="1px dashed red";
     poljePassRep.style.border="1px dashed red";
-    document.getElementById("porukaPass").innerHTML="<br>Lozinke nisu iste!<br>";
-    document.getElementById("porukaPassRep").innerHTML="<br>Lozinke nisu iste!<br>";
+    document.getElementById("porukaPass").innerHTML="<br>The passwords are not the same!<br>";
+    document.getElementById("porukaPassRep").innerHTML="<br>The passwords are not the same!<br>";
   }
 
   if (slanjeForme != true) {
@@ -47,7 +47,7 @@ document.getElementById("prijava").onclick = function(event) {
 };
 
 function myFunction1() {
-  var x = document.getElementById("lozinka");
+  var x = document.getElementById("password");
   if (x.type === "password") {
     x.type = "text";
   } else {
@@ -56,7 +56,7 @@ function myFunction1() {
 }
 
 function myFunction2() {
-  var x = document.getElementById("lozinkaRep");
+  var x = document.getElementById("passwordRep");
   if (x.type === "password") {
     x.type = "text";
   } else {

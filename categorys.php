@@ -60,15 +60,15 @@
 </head>
 <body>
   <div class="logo">
-    <a href="index.php"><img src="bbc.jpg" /></a>
+    <a href="index.php"><img src="img/bbc.jpg" /></a>
   </div>
 
   <div class="nav">
     <div class="wrapper">
 			<a href="index.php">HOME</a>
-      <a href="kategorija.php?kategorija=svijet">WORLD</a>
-      <a href="kategorija.php?kategorija=ekonomija">ECONOMY</a>
-			<a class="foc" href="registracija.php">REGISTRATION</a>
+      <a href="category.php?category=world">WORLD</a>
+      <a href="category.php?category=economy">ECONOMY</a>
+			<a class="foc" href="categorys.php">REGISTRATION</a>
 			<a href="login.php">Login</a>
     </div>
   </div>
@@ -82,20 +82,20 @@
 				<br/><span id="porukaIme" class="bojaPoruke"></span>
         <br/><br/>
 
-				<input name="prezime" id="prezime" type="text" class="ime" placeholder="Last name" required/>
-				<br/><span id="porukaPrezime" class="bojaPoruke"></span>
+				<input name="last_name" id="last_name" type="text" class="ime" placeholder="Last name" required/>
+				<br/><span id="messageLast_name" class="bojaPoruke"></span>
         <br/><br/>
 
         <input name="username" id="username" type="text" class="username" placeholder="username" required/>
-				<br/><span id="porukaUsername" class="bojaPoruke"></span>
+				<br/><span id="Username_message" class="bojaPoruke"></span>
 				<br/><br/>
 
-        <input name="pass" id="lozinka" type="password" class="pass" placeholder="Password" required/>
+        <input name="pass" id="password" type="password" class="pass" placeholder="Password" required/>
 				<br/><input type="checkbox" class="showpass" onclick="myFunction1()">Show password
 				<br/><span id="porukaPass" class="bojaPoruke mes"></span>
         <br/>
 
-				<input name="pass" id="lozinkaRep" type="password" class="pass pass_mes" placeholder="Password" required/>
+				<input name="pass" id="passwordRep" type="password" class="pass pass_mes" placeholder="Password" required/>
 				<br/><input type="checkbox" class="showpass" onclick="myFunction2()">Show password
 				<br/><span id="porukaPassRep" class="bojaPoruke mes"></span>
         <br/>
@@ -114,14 +114,14 @@
 
         if ($dbc && isset($_POST['submit'])) {
           $ime = $_POST['ime'];
-          $prezime = $_POST['prezime'];
+          $last_name = $_POST['last_name'];
           $username = $_POST['username'];
-          $lozinka = $_POST['pass'];
-          $hashed_password = password_hash($lozinka, CRYPT_BLOWFISH);
-          $razina = 0;
+          $password = $_POST['pass'];
+          $hashed_password = password_hash($password, CRYPT_BLOWFISH);
+          $level = 0;
           $registriranKorisnik = false;
 
-          $sql = "SELECT * FROM korisnik WHERE korisnicko_ime = ?";
+          $sql = "SELECT * FROM user WHERE username = ?";
           $stmt = mysqli_stmt_init($dbc);
           if (mysqli_stmt_prepare($stmt, $sql)) {
             mysqli_stmt_bind_param($stmt, 's', $username);
@@ -131,10 +131,10 @@
           if (mysqli_stmt_num_rows($stmt) > 0) {
             echo "<p style='color:#EA212D;font-weight:bold'>Username already exists!</p>";
           } else {
-            $sql = "INSERT INTO korisnik (ime, prezime,korisnicko_ime, lozinka, razina) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO user (ime, last_name,username, password, level) VALUES (?, ?, ?, ?, ?)";
             $stmt = mysqli_stmt_init($dbc);
             if (mysqli_stmt_prepare($stmt, $sql)) {
-              mysqli_stmt_bind_param($stmt, 'ssssd', $ime, $prezime, $username, $hashed_password, $razina);
+              mysqli_stmt_bind_param($stmt, 'ssssd', $ime, $last_name, $username, $hashed_password, $level);
               mysqli_stmt_execute($stmt);
               $registriranKorisnik = true;
             }

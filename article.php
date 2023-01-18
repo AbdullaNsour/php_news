@@ -14,10 +14,10 @@
 	<title>
 		<?php
 			$id = $_GET['id'];
-			$query = "SELECT naslov FROM vijesti WHERE id=$id";
+			$query = "SELECT title FROM news WHERE id=$id";
 			$result = mysqli_query($dbc, $query);
 			while($row = mysqli_fetch_array($result)) {
-				echo $row['naslov'];
+				echo $row['title'];
 			}
 		?>
 	</title>
@@ -45,15 +45,15 @@
   <div class="nav">
     <div class="wrapper">
 			<a href="index.php">HOME</a>
-      <a href="kategorija.php?kategorija=svijet">WORLD</a>
-      <a href="kategorija.php?kategorija=ekonomija">ECONOMY</a>
+      <a href="category.php?category=world">WORLD</a>
+      <a href="category.php?category=economy">ECONOMY</a>
 			<?php
 				if(isset($_SESSION['username'])) {
-					echo "<a href='administracija.php'>ADMINISTRATION</a>";
-					echo "<a href='unos.php'>ENTRY</a>";
+					echo "<a href='administration.php'>ADMINISTRATION</a>";
+					echo "<a href='input.php'>ENTRY</a>";
 					echo "<a href='logout.php'>LOGOUT</a>";
 				} else {
-					echo "<a href='registracija.php'>REGISTRACIJA</a>";
+					echo "<a href='categorys.php'>categorys</a>";
 					echo "<a href='login.php'>Login</a>";
 				}
 			?>
@@ -67,17 +67,17 @@
 
         $id = $_GET['id'];
         if ($dbc) {
-          $query = "SELECT * FROM vijesti WHERE id=$id";
+          $query = "SELECT * FROM news WHERE id=$id";
           $result = mysqli_query($dbc, $query);
           while($row = mysqli_fetch_array($result)) {
             echo "
               <article>
-              <p class='kat'>".$row['kategorija']."</p>
-              <h2>".$row['naslov']."</h2>
-              <p class='datetime'>Objavljeno ".$row['datum']." u ".$row['vrijeme']."</p>
-              <img class='clanak_image' src='img/".$row['slika']."'/>
-              <p class='sazetak'>".$row['sazetak']."</p>
-              <p class='tekst'>".$row['tekst']."</p>
+              <p class='kat'>".$row['category']."</p>
+              <h2>".$row['title']."</h2>
+              <p class='datetime'>Objavljeno ".$row['date']." u ".$row['time']."</p>
+              <img class='article_image' src='img/".$row['image']."'/>
+              <p class='details'>".$row['details']."</p>
+              <p class='text'>".$row['text']."</p>
               </article>";
           }
         }

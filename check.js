@@ -1,21 +1,21 @@
-// Provjera forme prije slanja
+// Checking the form before sending
 document.getElementById("slanje").onclick = function(event) {
   var slanjeForme = true;
 
-  // Naslov vijesti (5-30 znakova)
-  var poljeTitle = document.getElementById("naslov");
-  var title = document.getElementById("naslov").value;
+  // Title news (5-30 characters)
+  var poljeTitle = document.getElementById("title");
+  var title = document.getElementById("title").value;
   if (title.length < 5 || title.length > 55) {
     slanjeForme = false;
     poljeTitle.style.border="2px solid red";
     document.getElementById("porukaTitle").style.color = "red";
     document.getElementById("porukaTitle").style.padding = "0 5px";
-    document.getElementById("porukaTitle").innerHTML="Naslov vijesti mora imati između 5 i 55 znakova!<br>";
+    document.getElementById("porukaTitle").innerHTML="The news title must have between 5 and 55 characters!<br>";
   }
 
-  // Kratki sadržaj (10-100 znakova)
-  var poljeAbout = document.getElementById("sazetak");
-  var about = document.getElementById("sazetak").value;
+  // Short content (10-100 characters)
+  var poljeAbout = document.getElementById("details");
+  var about = document.getElementById("details").value;
   if (about.length < 10 || about.length > 100) {
     slanjeForme = false;
     poljeAbout.style.border="2px solid red";
@@ -23,36 +23,36 @@ document.getElementById("slanje").onclick = function(event) {
     document.getElementById("porukaAbout").innerHTML="Short content must be between 10 and 100 characters!<br>";
   }
 
-  // Sadržaj mora biti unesen
-  var poljeContent = document.getElementById("tekst");
-  var content = document.getElementById("tekst").value;
+  // Scontent must be entered
+  var poljeContent = document.getElementById("text");
+  var content = document.getElementById("text").value;
   if (content.length == 0) {
     slanjeForme = false;
     poljeContent.style.border="2px solid red";
     document.getElementById("porukaContent").style.color = "red";
-    document.getElementById("porukaContent").innerHTML="Sadržaj mora biti unesen!<br>";
+    document.getElementById("porukaContent").innerHTML="Scontent must be entered!<br>";
   }
 
-  // Slika mora biti unesena
-  var poljeSlika = document.getElementById("slika");
-  var pphoto = document.getElementById("slika").value;
+  // Image must be entered
+  var fieldImage = document.getElementById("image");
+  var pphoto = document.getElementById("image").value;
   if (pphoto.length == 0) {
     slanjeForme = false;
-    poljeSlika.style.border="2px dashed red";
-    poljeSlika.style.padding="13px 0 0 10px";
-    document.getElementById("porukaSlika").style.color = "red";
-    document.getElementById("porukaSlika").style.padding = "0 5px";
-    document.getElementById("porukaSlika").innerHTML="Slika mora biti unesena!<br>";
+    fieldImage.style.border="2px dashed red";
+    fieldImage.style.padding="13px 0 0 10px";
+    document.getElementById("messageImage").style.color = "red";
+    document.getElementById("messageImage").style.padding = "0 5px";
+    document.getElementById("messageImage").innerHTML="Image must be entered!<br>";
   }
 
-  // Kategorija mora biti odabrana
-  var poljeCategory = document.getElementById("kategorija");
-  if(document.getElementById("kategorija").selectedIndex == 0) {
+  // Category must be selected
+  var poljeCategory = document.getElementById("category");
+  if(document.getElementById("category").selectedIndex == 0) {
     slanjeForme = false;
     poljeCategory.style.border="2px dashed red";
-    document.getElementById("porukaKategorija").style.color = "red";
-    document.getElementById("porukaKategorija").style.padding = "0 5px";
-    document.getElementById("porukaKategorija").innerHTML="Kategorija mora biti odabrana!<br>";
+    document.getElementById("messageCategory").style.color = "red";
+    document.getElementById("messageCategory").style.padding = "0 5px";
+    document.getElementById("messageCategory").innerHTML="Category must be selected !<br>";
   }
 
   if (slanjeForme != true) {

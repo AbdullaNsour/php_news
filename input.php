@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
-  <title>UNOS PODATAKA</title>
+  <title>Input PODATAKA</title>
   <style>
     .main {
       height: 1150px;
@@ -26,7 +26,7 @@
       margin-bottom: 15px;
       padding: 9px 0 0 11px;
     }
-    .sazetak {
+    .details {
       height: 70px;
     }
     input {
@@ -35,17 +35,17 @@
       padding-left: 10px;
       margin-bottom: 15px;
     }
-    .naslov, .kategorija {
+    .title, .category {
       width: 350px;
       height: 30px;
       margin-top: 5px;
       margin-left: 10px;
     }
-    .slika {
+    .image {
       width: 420px;
       margin-top: 10px;
     }
-    .kategorija {
+    .category {
       width: 190px;
       height: 35px;
       padding-left: 4px;
@@ -80,16 +80,16 @@
 </head>
 <body>
   <div class="logo">
-    <a href="index.php"><img src="bbc.jpg" /></a>
+    <a href="index.php"><img src="img/bbc.jpg" /></a>
   </div>
 
   <div class="nav">
     <div class="wrapper">
       <a href="index.php">HOME</a>
-      <a href="kategorija.php?kategorija=svijet">WORLD</a>
-      <a href="kategorija.php?kategorija=ekonomija">ECONOMY</a>
-			<a href="administracija.php">ADMINISTRATION</a>
-			<a class="foc" href="unos.php">ENTRY</a>
+      <a href="category.php?category=world">WORLD</a>
+      <a href="category.php?category=economy">ECONOMY</a>
+			<a href="administration.php">ADMINISTRATION</a>
+			<a class="foc" href="input.php">ENTRY</a>
 			<a href="logout.php">LOGOUT</a>
     </div>
   </div>
@@ -102,46 +102,46 @@
 
       if(isset($_SESSION['username'])) {
       echo '<h1>CONTENT ENTRY FORM<br/>IN THE DATABASE</h1>
-      <form enctype="multipart/form-data" method="POST" action="skripta.php">
-        <label for="naslov" required>News title:</label>
-        <input name="naslov" id="naslov" type="text" class="naslov" required/>
+      <form enctype="multipart/form-data" method="POST" action="script.php">
+        <label for="title" required>News title:</label>
+        <input name="title" id="title" type="text" class="title" required/>
         <span id="porukaTitle" class="bojaPoruke"></span>
         <br/><br/>
 
-        <label for="sazetak">Short news content (up to 100 characters):</label>
+        <label for="details">Short news content (up to 100 characters):</label>
         <br/>
         <span id="porukaAbout" class="bojaPoruke"></span>
-        <textarea name="sazetak" id="sazetak" type="text" class="sazetak" required></textarea>
+        <textarea name="details" id="details" type="text" class="details" required></textarea>
         <br/><br/>
 
-        <label for="tekst">News content:</label>
+        <label for="text">News content:</label>
         <br/>
         <span id="porukaContent" class="bojaPoruke"></span>
-        <textarea name="tekst" id="tekst" required></textarea>
+        <textarea name="text" id="text" required></textarea>
         <br/><br/>
 
-        <label for="slika">image</label>
+        <label for="image">image</label>
         <br/>
-        <input name="slika" id="slika" type="file" class="slika" required/>
-        <span id="porukaSlika" class="bojaPoruke"></span>
+        <input name="image" id="image" type="file" class="image" required/>
+        <span id="messageImage" class="bojaPoruke"></span>
         <br/>
 
-        <label for="kategorija" required>News category:</label>
+        <label for="category" required>News category:</label>
 
-        <select name="kategorija" id="kategorija" class="kategorija" required>
+        <select name="category" id="category" class="category" required>
           <option value="" disabled selected>Select a category</option>
-          <option value="svijet">World</option>
-          <option value="ekonomija">economy</option>
+          <option value="world">World</option>
+          <option value="economy">economy</option>
         </select>
-        <span id="porukaKategorija" class="bojaPoruke"></span>
+        <span id="messageCategory" class="bojaPoruke"></span>
         <br/><br/>
 
-        <label for="arhiva">Save to archive?</label>
-        <input type="checkbox" name="arhiva" class="option" value="option">
+        <label for="archives">Save to archive?</label>
+        <input type="checkbox" name="archives" class="option" value="option">
         <br/>
 
-        <input type="reset" class="button_no" value="Poništi" />
-        <input name="submit" type="submit" class="button_yes" id="slanje" value="Pohrani" />
+        <input type="reset" class="button_no" value="Undo" />
+        <input name="submit" type="submit" class="button_yes" id="slanje" value="save" />
       </form>';
     }?>
     </div>
